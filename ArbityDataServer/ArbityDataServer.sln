@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArbityDataServer", "ArbityDataServer\ArbityDataServer.csproj", "{9C17BF34-CB5F-4972-B8B2-BAC878B5FB01}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C17BF34-CB5F-4972-B8B2-BAC878B5FB01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C17BF34-CB5F-4972-B8B2-BAC878B5FB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C17BF34-CB5F-4972-B8B2-BAC878B5FB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C17BF34-CB5F-4972-B8B2-BAC878B5FB01}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AE8CE64-2C16-4DAB-8120-0762207C5A83}
+	EndGlobalSection
+EndGlobal
