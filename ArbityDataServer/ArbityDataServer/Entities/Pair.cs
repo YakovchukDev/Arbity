@@ -4,10 +4,10 @@ namespace ArbityDataServer.Entities
 {
     class Pair
     {
-        public CoinName FirstCoin { get; set; }
-        public CoinName SecondCoin { get; set; }
+        public readonly CoinShortName FirstCoin;
+        public readonly CoinShortName SecondCoin;
 
-        public Pair(CoinName firstCoin, CoinName secondCoin)
+        public Pair(CoinShortName firstCoin, CoinShortName secondCoin)
         {
             FirstCoin = firstCoin;
             SecondCoin = secondCoin;
