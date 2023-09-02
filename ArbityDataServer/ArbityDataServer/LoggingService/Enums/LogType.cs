@@ -1,6 +1,6 @@
 ﻿namespace ArbityDataServer.LoggingService.Enums
 {
-    enum LogLevel
+    public enum LogType
     {
         Debug = 0,
         Info = 1,
