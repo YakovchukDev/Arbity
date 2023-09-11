@@ -9,7 +9,7 @@ namespace ArbityDataServer.LoggingService
 
         public static void Info(string message, MethodBase location) => Log(LogType.Info, location, message);
         public static void Success(string message, MethodBase location) => Log(LogType.Success, location, message);
-        public static void Erorr(string message, MethodBase location) => Log(LogType.Error, location, message);
+        public static void Error(string message, MethodBase location) => Log(LogType.Error, location, message);
         public static void Failure(string message, MethodBase location) => Log(LogType.Failure, location, message);
         public static void Debug(string message, MethodBase location) => Log(LogType.Debug, location, message);
         public static void Hidden(string message, MethodBase location) => Log(LogType.Hidden, location, message);
