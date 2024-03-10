@@ -1,36 +1,31 @@
 ﻿using ArbityDataServer.Credentials.Entities;
 using ArbityDataServer.Entities.Enums;
 using ArbityDataServer.LoggingService;
-using System;
-using System.IO;
-using System.Reflection;
 using System.Text.Json;
 
 namespace ArbityDataServer.Credentials
 {
-    class ExchangerCredentials
+    class BourseCredentials
     {
         private const string _fileName = @"D:\Credentials.json";
 
-        public Status Status { get; private set; }
-
         private List<CredentialsEntry> credentialsEntries = new List<CredentialsEntry>();
 
-        public ExchangerCredentials()
+        public BourseCredentials()
         {
             LoadCredentials();
         }
 
-        public CredentialsEntry GetCredentials(Exchanger exchanger)
+        public CredentialsEntry GetCredentials(Bourse bourse)
         {
             foreach(CredentialsEntry credentialsEntry in credentialsEntries) 
             {
-                if (credentialsEntry.Exchanger == exchanger)
+                if (credentialsEntry.Exchanger == bourse)
                 {
                     return credentialsEntry;
                 }
             }
-            Logger.Failure($"Credentials: {exchanger} is missing from the credentials list", MethodBase.GetCurrentMethod());
+            Logger.Error($"Credentials: {bourse} is missing from the credentials list");
             return null;
         }
 
@@ -40,28 +35,24 @@ namespace ArbityDataServer.Credentials
             {
                 if (!File.Exists(_fileName))
                 {
-                    Status = Status.Failure;
-                    Logger.Failure("Credentials: File not found!", MethodBase.GetCurrentMethod());
+                    Logger.Error("Credentials: File not found!");
                     return;
                 }
 
                 string jsonString = File.ReadAllText(_fileName);
                 credentialsEntries = JsonSerializer.Deserialize<List<CredentialsEntry>>(jsonString);
 
-                if (credentialsEntries == null)
+                if (credentialsEntries == null || credentialsEntries.Count == 0)
                 {
-                    Status = Status.Failure;
-                    Logger.Failure("Credentials: Failed to deserialize credentials.", MethodBase.GetCurrentMethod());
+                    Logger.Error("Credentials: Failed to deserialize credentials.");
                     return;
                 }
 
-                Status = Status.Success;
-                Logger.Success("Credentials: File read successfully!", MethodBase.GetCurrentMethod());
+                Logger.Success("Credentials: File read successfully!");
             }
             catch (Exception ex)
             {
-                Status = Status.Error;
-                Logger.Error(ex.Message, MethodBase.GetCurrentMethod());
+                Logger.Error(ex.Message);
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace ArbityDataServer.Entities.Enums
 {
-    enum Exchanger
+    public enum Bourse
     {
         Binance = 1,
         Huobi = 2,
@@ -11,6 +11,6 @@
         KuCoin = 7,
         Bitstamp = 8,
         Bitfinex = 9,
-        Gateio = 10,
+        Gateio = 10
     }
 }

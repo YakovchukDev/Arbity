@@ -1,6 +1,6 @@
 ﻿namespace ArbityDataServer.Entities.Enums
 {
-    enum CoinShortName
+    public enum CoinShortName
     {
         BTC = 1,
         USDT = 2,
@@ -11,6 +11,6 @@
         XMR = 7,
         XRP = 8,
         KAVA = 9,
-        BCH = 10,
+        BCH = 10
     }
 }

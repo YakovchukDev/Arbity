@@ -2,10 +2,10 @@
 
 namespace ArbityDataServer.Entities
 {
-    class Pair
+    public class Pair
     {
-        public readonly CoinShortName FirstCoin;
-        public readonly CoinShortName SecondCoin;
+        public CoinShortName FirstCoin { get; set; }
+        public CoinShortName SecondCoin { get; set; }
 
         public Pair(CoinShortName firstCoin, CoinShortName secondCoin)
         {
@@ -13,6 +13,16 @@ namespace ArbityDataServer.Entities
             SecondCoin = secondCoin;
         }
 
-        public string GetAttribute => $"{FirstCoin}{SecondCoin}";
+        public string GetAttribute(string separator = "", bool IsLowerSymbols = false)
+        {
+            if (IsLowerSymbols)
+            {
+                return $"{FirstCoin}{separator}{SecondCoin}".ToLower();
+            }
+            else
+            {
+                return $"{FirstCoin}{separator}{SecondCoin}".ToUpper();
+            }
+        }
     }
 }

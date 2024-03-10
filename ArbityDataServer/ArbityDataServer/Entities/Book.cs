@@ -1,6 +1,6 @@
 ﻿namespace ArbityDataServer.Entities
 {
-    class Book
+    public class Book
     {
         public decimal Price { get; private set; }
         public decimal Quantity { get; private set; }

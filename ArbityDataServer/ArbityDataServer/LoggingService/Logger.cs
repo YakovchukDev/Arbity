@@ -1,5 +1,4 @@
 ﻿using ArbityDataServer.LoggingService.Enums;
-using System.Reflection;
 
 namespace ArbityDataServer.LoggingService
 {
@@ -7,16 +6,15 @@ namespace ArbityDataServer.LoggingService
     {
         private static readonly string _filePath = @"Log.json";
 
-        public static void Info(string message, MethodBase location) => Log(LogType.Info, location, message);
-        public static void Success(string message, MethodBase location) => Log(LogType.Success, location, message);
-        public static void Error(string message, MethodBase location) => Log(LogType.Error, location, message);
-        public static void Failure(string message, MethodBase location) => Log(LogType.Failure, location, message);
-        public static void Debug(string message, MethodBase location) => Log(LogType.Debug, location, message);
-        public static void Hidden(string message, MethodBase location) => Log(LogType.Hidden, location, message);
+        public static void Info(string message) => Log(LogType.Info, message);
+        public static void Success(string message) => Log(LogType.Success, message);
+        public static void Error(string message) => Log(LogType.Error, message);
+        public static void Debug(string message) => Log(LogType.Debug, message);
+        public static void Hidden(string message) => Log(LogType.Hidden, message);
 
-        public static void Log(LogType logLevel, MethodBase location, string message) 
+        public static void Log(LogType logLevel, string message) 
         {
-            LogEntry newLog = new LogEntry(logLevel, DateTime.Now, location, message);
+            LogEntry newLog = new LogEntry(logLevel, DateTime.Now, message);
             if (newLog.LogLevel != LogType.Hidden)
             {
                 Output(newLog);
@@ -36,9 +34,6 @@ namespace ArbityDataServer.LoggingService
                     break;
                 case LogType.Error:
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    break;
-                case LogType.Failure:
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
                     break;
                 case LogType.Debug:
                     Console.ForegroundColor = ConsoleColor.White;
@@ -66,7 +61,7 @@ namespace ArbityDataServer.LoggingService
             }
             catch (Exception ex)
             {
-                LogEntry log = new LogEntry(LogType.Error, DateTime.Now, MethodBase.GetCurrentMethod(), ex.Message);
+                LogEntry log = new LogEntry(LogType.Error, DateTime.Now, ex.Message);
                 Output(log);
             }
         }

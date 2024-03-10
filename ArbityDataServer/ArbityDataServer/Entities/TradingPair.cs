@@ -1,26 +1,22 @@
-﻿using ArbityDataServer.Entities.Enums;
-
-namespace ArbityDataServer.Entities
+﻿namespace ArbityDataServer.Entities
 {
-    class TradingPair
+    public class TradingPair
     {
         public readonly Pair Pair;
-        public readonly Exchanger Exchanger;
-        public Volume Bids { get; private set; }
-        public Volume Asks { get; private set; }
+        public VolumeData Bids { get; private set; }
+        public VolumeData Asks { get; private set; }
 
-        public TradingPair(Pair pair, Exchanger exchanger, Volume bids, Volume asks)
+        public TradingPair(Pair pair, VolumeData bids, VolumeData asks)
         {
             Pair = pair;
-            Exchanger = exchanger;
             Bids = bids;
             Asks = asks;
         }
 
-        public void SetVolume(Volume bids, Volume asks)
+        public void CalculateAll()
         {
-            Bids = bids;
-            Asks = asks;
+            Asks.Calculate();
+            Bids.Calculate();
         }
     }
 }
