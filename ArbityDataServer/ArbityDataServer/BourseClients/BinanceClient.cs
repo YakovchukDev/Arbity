@@ -18,7 +18,7 @@ namespace ArbityDataServer.ExchangerClients
         public Bourse Info => Bourse.Binance;
 
         private BinanceSocketClient _client = new BinanceSocketClient();
-        //private InternalArbitrageFinder _internalArbitrageFinder = new InternalArbitrageFinder();
+        private InternalArbitrageFinder _internalArbitrageFinder = new InternalArbitrageFinder();
         private Dictionary<Pair, BinanceSpotSymbolOrderBook> _orderBooks = new Dictionary<Pair, BinanceSpotSymbolOrderBook>();
         private Dictionary<Pair, Kline> _pairKlines = new Dictionary<Pair, Kline>();
         private CredentialsEntry Credentials { get; set; }
@@ -122,7 +122,7 @@ namespace ArbityDataServer.ExchangerClients
             decimal asks = 0;
             decimal bids = 0;
             DateTime lastUpdate = DateTime.Now;
-            await _client.SpotApi.ExchangeData.SubscribeToTradeUpdatesAsync("BTCUSDT", data =>
+            await _client.SpotApi.ExchangeData.SubscribeToTradeUpdatesAsync(pair.GetAttribute(), data =>
             {
                 TimeSpan delay = DateTime.Now - lastUpdate;
                 if (delay.TotalSeconds >= 60)
